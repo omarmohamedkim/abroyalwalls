@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -18,13 +19,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 5%;
+      padding: 10px 20px;
       background: #0C1C2C;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
+    
     }
     .brand-container {
       display: flex;
@@ -32,8 +29,8 @@
       gap: 0.8rem;
     }
     .logo {
-      font-size: 2rem;
-      background-image: url(logo2.png);
+      color:#FFFF;
+      font-size: 24px;;
     }
     .brand-name {
       font-size: 1.5rem;
@@ -45,18 +42,28 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
     .nav-links {
-      display: flex;
-      gap: 2.5rem;
+     list-style: none;
+     display: flex;
     }
+
+    .nav-links li{
+
+        margin: 0 10px;
+    }
+    
     .nav-links a {
       color: #fff;
-      font-weight: 600;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      position: relative;
-      transition: color 0.3s ease;
+      text-decoration: none;
+      padding:10px;
+    }
+
+    .menu-toggle{
+        display: none;
+        background: none;
+        border: none;
+        color:#FFFF;
+        font-size: 24px;
+        cursor: pointer;
     }
     .nav-links a i {
       font-size: 1.2rem;
@@ -86,17 +93,23 @@
     }
     @media (max-width: 768px) {
       .nav-links {
-        position: fixed;
-        top: 70px;
-        right: -100%;
-        width: 60%;
-        height: calc(100% - 70px);
-        background: #000;
+        display: none;
         flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        padding-top: 2rem;
-        transition: right 0.3s ease;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+      }
+      .na-links li{
+        text-align: center;
+        padding: 10px;
+      }
+      .menu-toggle{
+        display: block;
+      }
+      .nav-links.show{
+        display: flex;
       }
       .nav-links.active { right: 0; }
       .hamburger { display: block; }
@@ -396,20 +409,19 @@
     
    <!-- النافبار المُحسّن -->
    <nav class="navbar">
-    <div class="nav-container">
-      <div class="brand-container">
-        <img src="logo2.png" class="custom-logo" alt="A&B Royal Walls Logo">
-        <div class="brand-name">A&B ROYAL WALLS</div>
-      </div>
+    <div class="logo">My Website</div>
+    <button class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
-      <li><a href="#about"><i class="fas fa-user"></i>About</a></li>
-      <li><a href="#services"><i class="fas fa-cog"></i>Services</a></li>
-      <li><a href="#portfolio"><i class="fas fa-project-diagram"></i>Projects</a></li>
-      <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+        <li><a href="#services"><i class="fas fa-cog"></i> Services</a></li>
+        <li><a href="#portfolio"><i class="fas fa-project-diagram"></i> Projects</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
     </ul>
-  </nav>
-  
+</nav>
+
   <!-- قسم البطل (Hero) -->
   <header class="hero" id="home">
     <div class="hero-content">
@@ -567,6 +579,10 @@
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+    document.getElementById("nav-links").classList.toggle("show");
+});
+
   </script>
 </body>
 </html>
