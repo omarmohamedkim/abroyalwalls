@@ -309,6 +309,87 @@
       .nav-links { flex-direction: column; gap: 1rem; }
       nav.navbar { flex-direction: column; align-items: flex-start; }
       .contact-container { padding: 1.5rem; }
+
+
+    /* أنماط مخصصة للنافبار */
+    .navbar {
+      background: #1a1a1a !important;
+      padding: 15px 5% !important;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .custom-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* تحسين القائمة المنسدلة للهواتف */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 90px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 90px);
+        background: #1a1a1a;
+        flex-direction: column;
+        padding: 2rem;
+        transition: 0.3s ease-in-out;
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .hamburger {
+        display: block !important;
+        font-size: 2rem;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    /* تحسينات عامة للتصميم */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                  url('construction-bg.jpg') center/cover fixed;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+ 
+
+      
     }
   </style>
 </head>
