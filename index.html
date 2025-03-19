@@ -42,8 +42,19 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
     .nav-links {
-     list-style: none;
-     display: flex;
+        display: none;
+  flex-direction: column;
+  background: #1a1a1a;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+    }
+
+    .nav-links.show{
+
+        display: flex;
     }
 
     .nav-links li{
@@ -93,7 +104,7 @@
     }
     @media (max-width: 768px) {
       .nav-links {
-        display: none;
+       display: none !important; /* إجبار القائمة على الاختفاء */
         flex-direction: column;
         width: 100%;
         background-color: #333;
@@ -532,7 +543,7 @@
 
   <style>
     .custom-logo{
-      pading:10px;
+      padding:10px;
       width:11%;
     }
   .contact-grid {
@@ -573,16 +584,15 @@
   </footer>
   
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+  
+      menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("show"); // قم بتبديل إظهار وإخفاء القائمة
+      });
     });
-    document.getElementById("menu-toggle").addEventListener("click", function () {
-    document.getElementById("nav-links").classList.toggle("show");
-});
-
   </script>
+  
 </body>
 </html>
