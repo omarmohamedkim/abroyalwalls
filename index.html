@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
+    
     /* إعادة تعيين الأنماط والأنماط العامة */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Poppins', sans-serif; line-height: 1.6; background: #f4f4f4; color: #333; }
     a { text-decoration: none; }
     ul { list-style: none; }
-    
     /* أنماط النافبار */
     .navbar {
       display: flex;
@@ -21,68 +21,38 @@
       align-items: center;
       padding: 10px 20px;
       background: #0C1C2C;
+    }
     
-    }
-    .brand-container {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
     .logo {
-      color:#FFFF;
-      font-size: 24px;;
+      color: #FFFF;
+      font-size: 24px;
     }
-    .brand-name {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #CBA135; /* نص أسود */
-      background: #0C1C2C; /* خلفية رمادية */
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+    
     .nav-links {
-        display: none;
-  flex-direction: column;
-  background: #1a1a1a;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  padding: 10px;
+      display: flex;
+      margin: 0;
+      padding: 0;
     }
-
-    .nav-links.show{
-
-        display: flex;
-    }
-
-    .nav-links li{
-
-        margin: 0 10px;
-    }
+    
+    .nav-links li { margin: 0 10px; }
     
     .nav-links a {
       color: #fff;
-      text-decoration: none;
-      padding:10px;
+      padding: 10px;
+      position: relative;
     }
-
-    .menu-toggle{
-        display: none;
-        background: none;
-        border: none;
-        color:#FFFF;
-        font-size: 24px;
-        cursor: pointer;
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #FFFF;
+      font-size: 24px;
+      cursor: pointer;
     }
-    .nav-links a i {
-      font-size: 1.2rem;
-      color: #fff;
-      transition: color 0.3s ease;
-    }
-    .nav-links a:hover { color: #ccc; }
-    .nav-links a:hover i { color: #ccc; }
+    
+    .nav-links a i { font-size: 1.2rem; }
+    
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -93,7 +63,26 @@
       background: #fff;
       transition: width 0.3s ease;
     }
-    .nav-links a:hover::after { width: 100%; }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem;
+      }
+    
+      .nav-links li { text-align: center; padding: 10px; }
+    
+      .menu-toggle { display: block; }
+    
+      .nav-links.show { display: flex; }
+    }
+    
     
     /* قائمة الهامبرغر للشاشات الصغيرة */
     .hamburger {
@@ -104,7 +93,7 @@
     }
     @media (max-width: 768px) {
       .nav-links {
-       display: none !important; /* إجبار القائمة على الاختفاء */
+        display: none;
         flex-direction: column;
         width: 100%;
         background-color: #333;
@@ -117,7 +106,7 @@
         padding: 10px;
       }
       .menu-toggle{
-        display: block;
+        display: flex;
       }
       .nav-links.show{
         display: flex;
@@ -420,7 +409,7 @@
     
    <!-- النافبار المُحسّن -->
    <nav class="navbar">
-    <div class="logo">My Website</div>
+    <div class="logo">ِA&B ROYAL WALLS</div>
     <button class="menu-toggle" id="menu-toggle">
         <i class="fas fa-bars"></i>
     </button>
@@ -495,7 +484,7 @@
     <h2>Our Projects</h2>
     <div class="portfolio">
       <div class="portfolio-item">
-        <img src="https://images.unsplash.com/photo-1571171637578-0419f45f0c2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="Project 1" />
+        <img src="photo1.jpeg" alt="Project 1" />
         <div class="overlay">Project 1</div>
       </div>
       <div class="portfolio-item">
@@ -587,12 +576,11 @@
     document.addEventListener("DOMContentLoaded", function () {
       const menuToggle = document.getElementById("menu-toggle");
       const navLinks = document.getElementById("nav-links");
-  
+
       menuToggle.addEventListener("click", function () {
-        navLinks.classList.toggle("show"); // قم بتبديل إظهار وإخفاء القائمة
+        navLinks.classList.toggle("show");
       });
     });
   </script>
-  
 </body>
 </html>
