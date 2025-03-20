@@ -91,29 +91,7 @@
       color: #fff;
       cursor: pointer;
     }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #333;
-        position: absolute;
-        top: 60px;
-        left: 0;
-      }
-      .na-links li{
-        text-align: center;
-        padding: 10px;
-      }
-      .menu-toggle{
-        display: flex;
-      }
-      .nav-links.show{
-        display: flex;
-      }
-      .nav-links.active { right: 0; }
-      .hamburger { display: block; }
-    }
+  
     
     /* قسم البطل (Hero) */
     .hero {
@@ -358,22 +336,26 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links {
-        position: fixed;
-        top: 90px;
-        right: -100%;
-        width: 80%;
-        height: calc(100vh - 90px);
-        background: #1a1a1a;
-        flex-direction: column;
-        padding: 2rem;
-        transition: 0.3s ease-in-out;
-        z-index: 1000;
-      }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: fixed; /* تغيير من absolute إلى fixed */
+    top: 60px;
+    left: 0;
+    height: calc(100vh - 60px); /* تحديد ارتفاع مناسب */
+    overflow-y: auto; /* إضافة scroll إذا احتاج */
+    padding: 1rem;
+    z-index: 1000;
+  }
 
-      .nav-links.active {
-        right: 0;
-      }
+  .nav-links li {
+    text-align: center;
+    padding: 10px;
+  }
+
+
 
       .hamburger {
         display: block !important;
@@ -400,7 +382,16 @@
       margin-bottom: 1.5rem;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
- 
+    .nav-links a {
+  color: #fff;
+  padding: 15px;
+  display: block;
+  transition: background 0.3s;
+}
+
+.nav-links a:hover {
+  background: #444;
+}
     }
   </style>
 </head>
@@ -573,14 +564,33 @@
   </footer>
   
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const menuToggle = document.getElementById("menu-toggle");
-      const navLinks = document.getElementById("nav-links");
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    const navItems = document.querySelectorAll(".nav-links a");
 
-      menuToggle.addEventListener("click", function () {
+    // حدث فتح/إغلاق القائمة
+    menuToggle.addEventListener("click", function (e) {
+        e.stopPropagation(); // إيقاف انتشار الحدث
         navLinks.classList.toggle("show");
-      });
     });
+
+    // حدث إغلاق القائمة عند النقر على أي عنصر
+    navItems.forEach(item => {
+        item.addEventListener("click", () => {
+            navLinks.classList.remove("show");
+        });
+    });
+
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener("click", function (e) {
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+            navLinks.classList.remove("show");
+        }
+    });
+});
+
   </script>
 </body>
 </html>
